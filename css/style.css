@@ -1,6 +1,6 @@
-/* =========================================
+/* ---------------------------
    GLOBAL & THEME
-   ========================================= */
+   ---------------------------- */
 :root {
     --ted-red: #e61e1e;
     --bg-black: #000000;
@@ -20,8 +20,10 @@ body {
     line-height: 1.6;
 }
 
-/* BACKGROUND GLOWS (Restored) */
-/* --- NEW BACKGROUND SYSTEM --- */
+/*----------------
+BACKGROUND GLOWS
+--------------*/
+
 #bg-canvas {
   position: fixed;
   top: 0;
@@ -64,16 +66,16 @@ body::after {
   pointer-events: none;
 }
 
-/* =========================================
+/* ---------------------------
    COMPONENTS & TYPOGRAPHY
-   ========================================= */
+   ----------------------------- */
 .section { padding: 120px 5%; position: relative; z-index: 1; text-align: center; }
 h2.sec-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; }
 .eyebrow { color: var(--ted-red); letter-spacing: 5px; font-size: 0.8rem; display: block; margin-bottom: 15px; }
 
-/* =========================================
+/* ------------------------------------
    INTRO & NAV
-   ========================================= */
+   ----------------------------------- */
 #intro {
     position: fixed; inset: 0;
     background: #000; z-index: 1000;
@@ -106,9 +108,9 @@ h2.sec-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; }
 }
 .nav-btn:hover { background: var(--ted-red); box-shadow: 0 0 30px rgba(230,30,30,0.5); }
 
-/* =========================================
+/* --------------------------
    HERO
-   ========================================= */
+   ------------------------ */
 .hero {
     height: 100vh;
     display: flex; align-items: center; justify-content: center;
@@ -123,9 +125,9 @@ h2.sec-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; }
 }
 .desc { font-size: 1.3rem; color: var(--text-muted); max-width: 650px; margin: 0 auto; opacity: 0.7; }
 
-/* =========================================
+/* --------------------------------------
    ABOUT US
-   ========================================= */
+   -------------------------------------- */
 .about-container {
     display: flex; align-items: center; justify-content: space-between;
     max-width: 1200px; margin: 0 auto; gap: 80px; text-align: left;
@@ -134,9 +136,9 @@ h2.sec-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; }
 .about-title { flex: 1; text-align: right; }
 .about-title h2 { font-size: 4rem; font-weight: 800; line-height: 1; }
 
-/* ════════════════════════════════
+/* ----------------------------
    ORBIT SECTION — DESKTOP
-════════════════════════════════ */
+---------------------------------*/
 .orbit-section {
   width: 100%;
   min-height: 100vh;
@@ -288,14 +290,7 @@ h2.sec-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; }
   transition: opacity 0.4s;
   white-space: nowrap;
 }
-/*
-.caption-year {
-  font-size: 11px;
-  color: rgba(255,255,255,0.35);
-  margin-top: 3px;
-  letter-spacing: 2px;
-}
-  */
+
 .dot-nav {
   display: flex;
   gap: 6px;
@@ -315,24 +310,10 @@ h2.sec-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; }
   width: 18px;
   border-radius: 3px;
 }
-/* =========================================
-   MOBILE CAROUSEL (Restored & Smoothed)
-   ========================================= */
-/*.mobile-carousel { display: none; padding: 80px 0; overflow: hidden; }
-.mobile-header { text-align: center; margin-bottom: 40px; padding: 0 5%; }
-.mobile-header h2 { font-size: 2rem; letter-spacing: 2px; }
+/* ---------------------------------------
+   MOBILE CAROUSEL 
+   ------------------------------------- */
 
-.carousel-track {
-    display: flex; gap: 20px;
-    padding: 0 10%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-}
-.carousel-track::-webkit-scrollbar { display: none; } /* Hide scrollbar */
-/* Ensure the mobile sections are hidden on desktop by default */
-/* --- Speaker Cards Refactor --- */
-/* Hide mobile by default on Desktop */
 #mobileReel {
     display: none !important;
 }
@@ -461,9 +442,9 @@ h2.sec-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; }
 }
 
 
-/* =========================================
+/* ----------------------------
    SPEAKER CARDS
-   ========================================= */
+   ---------------------------- */
 /* --- SPEAKER REEL (Snap Effect) --- */
 /* Container for the reel */
 /* THE VIEWPORT (The Window) */
@@ -545,9 +526,9 @@ h2.sec-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; }
         width: 300px;
     }
 }
-/* =========================================
+/* -------------------------------
    COUNTDOWN
-   ========================================= */
+   -------------------------------*/
 .count-title { letter-spacing: 4px; font-size: 1rem; color: var(--ted-red); margin-bottom: 50px; }
 .count-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-bottom: 60px; }
 .time-box {
@@ -574,9 +555,9 @@ h2.sec-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; }
     transform: scale(1.05);
 }
 
-/* =========================================
+/* -----------------------------
    ANIMATIONS & RESPONSIVE
-   ========================================= */
+   -----------------------------*/
 
 /* Floating animation for Hero Title */
 .floating { animation: float 6s ease-in-out infinite; }

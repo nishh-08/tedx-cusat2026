@@ -1,17 +1,7 @@
 // Register the ScrollTrigger plugin with GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-// =========================================
-// DATA: Past Events & Speakers
-// =========================================
-/*const pastEvents = [
-    { title: "TEDx CUSAT 2019", year: "2019", img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800" },
-    { title: "TEDx CUSAT 2020", year: "2020", img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=800" },
-    { title: "TEDx CUSAT 2021", year: "2021", img: "https://images.unsplash.com/photo-1475721027187-40ae17e07b34?q=80&w=800" },
-    { title: "TEDx CUSAT 2022", year: "2022", img: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800" },
-    { title: "TEDx CUSAT 2023", year: "2023", img: "https://images.unsplash.com/photo-1531058020387-3be344556be6?q=80&w=800" },
-    { title: "TEDx CUSAT 2024", year: "2024", img: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?q=80&w=800" }
-];*/
+
 
 // =========================================
 // 1. INTRO & HERO ANIMATIONS
@@ -119,104 +109,9 @@ revealElements.forEach(element => {
     setDesktopActive(currentIdx);
   }, 3000);
 })();
-/*
-// =========================================
-// 4. MOBILE CAROUSEL BUILD
-// =========================================
-function initMobileCarousel() {
-    const track = document.getElementById('mobileCarouselTrack');
-    if (!track) return;
-
-    pastEvents.forEach(ev => {
-        const card = document.createElement('div');
-        card.className = 'mobile-card';
-        card.innerHTML = `
-            <img src="${ev.img}" alt="${ev.title}">
-            <div class="m-card-content">
-                <h3>${ev.title}</h3>
-                <p>${ev.year}</p>
-            </div>
-        `;
-        track.appendChild(card);
-    });
-}
-
-// RUN INITIALIZATION
-initOrbit();
-initMobileCarousel();
-*/
-
-// =========================================
-// 3. DESKTOP ORBIT SYSTEM
-// =========================================
-/*
-(function () {
-  const events = [
-    { title: "TEDx CUSAT 2019", speaker: "Dr. Vikram Sethi", img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800" },
-    { title: "TEDx CUSAT 2020", speaker: "Ananya Rangan", img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=800" },
-    { title: "TEDx CUSAT 2021", speaker: "Rohan K. Varma", img: "https://images.unsplash.com/photo-1475721027187-40ae17e07b34?q=80&w=800" },
-    { title: "TEDx CUSAT 2022", speaker: "Meera Krishnan", img: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800" },
-    { title: "TEDx CUSAT 2023", speaker: "Aditya Narayan", img: "https://images.unsplash.com/photo-1531058020387-3be344556be6?q=80&w=800" },
-    { title: "TEDx CUSAT 2024", speaker: "Sarah Elizabeth", img: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?q=80&w=800" },
-  ];
-
-  const N = events.length;
-  const wrapper = document.getElementById('orbitWrapper');
-  const dotNav = document.getElementById('dotNav');
-  const captionTitle = document.getElementById('captionTitle');
-
-  if (!wrapper || !dotNav) return;
-
-  const orbitNodes = [];
-
-  events.forEach((ev, i) => {
-    const track = document.createElement('div');
-    track.className = 'orbit-track';
-    track.style.animationDelay = `-${(i / N) * 20}s`;
-
-    const node = document.createElement('div');
-    node.className = 'orbit-node';
-    node.style.animationDelay = `-${(i / N) * 20}s`;
-
-    const card = document.createElement('div');
-    card.className = 'img-card';
-    card.innerHTML = `
-      <img src="${ev.img}" alt="${ev.title}">
-      <div class="overlay"><span>${ev.speaker}</span></div>
-    `;
-
-    card.addEventListener('click', () => setDesktopActive(i));
-
-    node.appendChild(card);
-    track.appendChild(node);
-    wrapper.appendChild(track);
-    orbitNodes.push(node);
-
-    const dot = document.createElement('div');
-    dot.className = 'dot' + (i === 0 ? ' active' : '');
-    dot.addEventListener('click', () => setDesktopActive(i));
-    dotNav.appendChild(dot);
-  });
-
-  function setDesktopActive(idx) {
-    orbitNodes.forEach((n, i) => n.classList.toggle('active-node', i === idx));
-    // Showing "PAST EVENTS" as the static title was requested via HTML, 
-    // but typically captionTitle updates. Here it remains unchanged from HTML unless you prefer it updates:
-    // captionTitle.textContent = events[idx].title; 
-    const dots = dotNav.querySelectorAll('.dot');
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-  }
-
-  let currentIdx = 0;
-  setInterval(() => {
-    currentIdx = (currentIdx + 1) % N;
-    setDesktopActive(currentIdx);
-  }, 3000);
-})();
-*/
-// =========================================
-// 4. MOBILE CAROUSEL BUILD
-// =========================================
+/* ======================
+mobile view of past events
+=========================*/
 function initMobileCarousel() {
     const track = document.getElementById('mobileCarouselTrack');
     if (!track) return;
@@ -282,7 +177,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3500);
 });
 
-// SPEAKERS
+/*=============
+SPEAKERS
+===============*/
 function initSpeakerReel() {
     const viewport = document.querySelector('.speaker-reel-viewport');
     const cards = document.querySelectorAll('.speaker-reel-card');
