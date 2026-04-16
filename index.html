@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEDx CUSAT 2026</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<div id="intro">
+    <div class="energy-layer"></div>
+    <h1 class="intro-text">TEDx<span>CUSAT</span> 2026</h1>
+</div>
+
+<nav class="nav">
+    <div class="logo">TEDx<span>CUSAT</span></div>
+    <button class="nav-btn">Get Tickets</button>
+</nav>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="main-title floating">Between What Is<br>and What’s Next</h1>
+            <p class="desc">Where certainty dissolves and transformation begins.</p>
+        </div>
+    </section>
+
+    <section class="section about-section reveal">
+        <div class="about-container">
+            <div class="about-text">
+                <p>TEDxCUSAT is an independently organized TED event at Cochin University of Science and Technology, bringing together thinkers, creators, and innovators to share ideas that matter.</p>
+            </div>
+            <div class="about-title">
+                <h2>About Us</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESKTOP ORBIT -->
+     <!--
+<section class="orbit-section" id="orbitSection">
+  <div class="bg-glow"></div>
+  <div class="orbit-wrapper" id="orbitWrapper">
+    <div class="orbit-ring"></div>
+    <div class="orbit-ring orbit-ring-2"></div>
+    <div class="orbit-ring orbit-ring-3"></div>
+    <div class="center-logo">
+      <div class="tedx-text">TED<span>x</span></div>
+      <div class="sub">CUSAT</div>
+    </div>
+    </div>
+  <div class="caption-strip">
+    <div class="caption-title" id="captionTitle">TEDx CUSAT 2024</div>
+    <div class="caption-year">PAST EVENTS</div>
+    <div class="dot-nav" id="dotNav"></div>
+  </div>
+</section>
+-->
+<section class="orbit-section" id="orbitSection">
+  <div class="bg-glow"></div>
+  <div class="orbit-wrapper" id="orbitWrapper">
+    <div class="orbit-ring"></div>
+    <div class="orbit-ring orbit-ring-2"></div>
+    <div class="orbit-ring orbit-ring-3"></div>
+    <div class="center-logo">
+      <div class="tedx-text">TED<span>x</span></div>
+      <div class="sub">CUSAT</div>
+    </div>
+  </div>
+  <div class="caption-strip">
+    <div class="caption-title" id="captionTitle">PAST EVENTS</div>
+    <div class="dot-nav" id="dotNav"></div>
+  </div>
+</section>
+<!-- MOBILE CAROUSEL -->
+
+<section id="mobileReel">
+    <div class="mobile-header">
+        <div class="tedx-text">TED<span>x</span></div>
+        <div class="sub">CUSAT</div>
+        <h2 class="mobile-title">PAST EVENTS</h2>
+    </div>
+    <div class="carousel-track-wrap">
+        <div class="carousel-track" id="mobileCarouselTrack"></div>
+    </div>
+</section>
+    
+
+<!--speaker session-->
+    <section class="section speakers" id="speakersSection">
+    <span class="eyebrow">THE LINEUP</span>
+    <h2 class="sec-title">Voices of 2026</h2>
+
+    <div class="speaker-reel-viewport">
+        <div class="speaker-reel-track" id="speakerTrack">
+            <div class="speaker-reel-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Speaker">
+                <div class="card-content">
+                    <h3>Arjun Menon</h3>
+                    <p class="role">AI Researcher</p>
+                    <p class="topic">“Rethinking Intelligence”</p>
+                </div>
+            </div>
+            <div class="speaker-reel-card">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Speaker">
+                <div class="card-content">
+                    <h3>Meera Nair</h3>
+                    <p class="role">Climate Advocate</p>
+                    <p class="topic">“Beyond Sustainability”</p>
+                </div>
+            </div>
+            <div class="speaker-reel-card">
+                <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Speaker">
+                <div class="card-content">
+                    <h3>Rahul Das</h3>
+                    <p class="role">Entrepreneur</p>
+                    <p class="topic">“Building the Unknown”</p>
+                </div>
+            </div>
+            <div class="speaker-reel-card">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Speaker">
+                <div class="card-content">
+                    <h3>Ananya Iyer</h3>
+                    <p class="role">Neuroscientist</p>
+                    <p class="topic">“Inside the Human Mind”</p>
+                </div>
+            </div>
+            <div class="speaker-reel-card">
+                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Speaker">
+                <div class="card-content">
+                    <h3>Faiz Khan</h3>
+                    <p class="role">Filmmaker</p>
+                    <p class="topic">“Stories That Shift Reality”</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--countdown session-->
+    <section class="section countdown reveal">
+        <h2 class="count-title">TIME REMAINING</h2>
+        <div class="count-container">
+            <div class="time-box">
+                <span id="days">00</span>
+                <p>DAYS</p>
+            </div>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <p>HOURS</p>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <p>MINUTES</p>
+            </div>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <p>SECONDS</p>
+            </div>
+        </div>
+        <button class="cta-glow">Get Tickets</button>
+    </section>
+</main>
+
+<script src="js/particles.js"></script>
+<script src="js/countdown.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,498 @@
+/* =========================================
+   GLOBAL & THEME
+   ========================================= */
+:root {
+    --ted-red: #e61e1e;
+    --bg-black: #000000;
+    --text-main: #f5f5f5;
+    --text-muted: #cccccc;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: var(--bg-black);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* BACKGROUND GLOWS (Restored) */
+body::before {
+    content: '';
+    position: fixed; top: -10%; left: -10%;
+    width: 60%; height: 60%;
+    background: radial-gradient(circle, rgba(230, 30, 30, 0.15) 0%, transparent 70%);
+    z-index: -1; pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed; bottom: -10%; right: -10%;
+    width: 60%; height: 60%;
+    background: radial-gradient(circle, rgba(150, 0, 0, 0.12) 0%, transparent 70%);
+    z-index: -1; pointer-events: none;
+}
+
+#particles {
+    position: fixed; inset: 0;
+    z-index: 0; pointer-events: none;
+}
+
+/* =========================================
+   COMPONENTS & TYPOGRAPHY
+   ========================================= */
+.section { padding: 120px 5%; position: relative; z-index: 1; text-align: center; }
+h2.sec-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; }
+.eyebrow { color: var(--ted-red); letter-spacing: 5px; font-size: 0.8rem; display: block; margin-bottom: 15px; }
+
+/* =========================================
+   INTRO & NAV
+   ========================================= */
+#intro {
+    position: fixed; inset: 0;
+    background: #000; z-index: 1000;
+    display: flex; justify-content: center; align-items: center;
+    overflow: hidden;
+}
+.energy-layer {
+    position: absolute; width: 150%; height: 150%;
+    background: radial-gradient(circle, rgba(230,30,30,0.3) 0%, transparent 60%);
+}
+.intro-text { font-size: 4rem; font-weight: 900; z-index: 1001; position: relative; opacity: 0; }
+.intro-text span { color: var(--ted-red); }
+
+.nav {
+    position: fixed; top: 0; width: 100%;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 25px 5%;
+    z-index: 100;
+    backdrop-filter: transparent;
+    border-bottom: 1px solid var(--border);
+}
+.logo { font-weight: 800; font-size: 1.6rem; letter-spacing: -1px; }
+.logo span { color: var(--ted-red); }
+.nav-btn {
+    background: transparent;
+    border: 1px solid var(--ted-red);
+    color: #fff; padding: 12px 24px;
+    border-radius: 50px; cursor: pointer;
+    font-weight: 600; transition: 0.4s;
+}
+.nav-btn:hover { background: var(--ted-red); box-shadow: 0 0 30px rgba(230,30,30,0.5); }
+
+/* =========================================
+   HERO
+   ========================================= */
+.hero {
+    height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 0 10%;
+    position: relative; z-index: 1;
+}
+.main-title {
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1; font-weight: 800;
+    margin-bottom: 25px;
+    letter-spacing: -2px;
+}
+.desc { font-size: 1.3rem; color: var(--text-muted); max-width: 650px; margin: 0 auto; opacity: 0.7; }
+
+/* =========================================
+   ABOUT US
+   ========================================= */
+.about-container {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1200px; margin: 0 auto; gap: 80px; text-align: left;
+}
+.about-text { flex: 1.5; font-size: 1.2rem; line-height: 1.8; color: var(--text-muted); }
+.about-title { flex: 1; text-align: right; }
+.about-title h2 { font-size: 4rem; font-weight: 800; line-height: 1; }
+
+/* ════════════════════════════════
+   ORBIT SECTION — DESKTOP
+════════════════════════════════ */
+.orbit-section {
+  width: 100%;
+  min-height: 100vh;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  padding: 60px 20px;
+}
+
+.bg-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(230,30,30,0.1) 0%, transparent 65%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.orbit-wrapper {
+  position: relative;
+  width: 560px; height: 560px;
+  flex-shrink: 0;
+}
+
+.orbit-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 460px; height: 460px;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+.orbit-ring-2 {
+  width: 320px; height: 320px;
+  border-color: rgba(230,30,30,0.07);
+}
+.orbit-ring-3 {
+  width: 150px; height: 150px;
+  border-color: rgba(255,255,255,0.04);
+}
+
+.center-logo {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+}
+.center-logo .tedx-text {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #fff;
+}
+.center-logo .tedx-text span { color: #e61e1e; }
+.center-logo .sub {
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+
+/* Orbit mechanics */
+.orbit-track {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  animation: orbit-spin 20s linear infinite;
+}
+.orbit-node {
+  position: absolute;
+  width: 100px; height: 100px;
+  transform: translate(-50%, -50%) translateX(230px);
+  animation: counter-spin 20s linear infinite;
+}
+
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes counter-spin {
+  from { transform: translate(-50%,-50%) translateX(230px) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) translateX(230px) rotate(-360deg); }
+}
+
+/* Image cards */
+.img-card {
+  width: 100px; height: 100px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.08);
+  background: #1c1c1c;
+  position: relative;
+  transition: border-color 0.5s, box-shadow 0.5s,
+              transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+.img-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.img-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.75));
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: flex-end;
+  padding: 7px;
+}
+.img-card .overlay span {
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+.img-card:hover .overlay { opacity: 1; }
+
+.active-node .img-card {
+  border-color: #e61e1e;
+  box-shadow: 0 0 0 1px rgba(230,30,30,0.6),
+              0 8px 36px rgba(230,30,30,0.3);
+  transform: scale(1.15);
+}
+
+/* Caption + dots */
+.caption-strip {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+.caption-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+  transition: opacity 0.4s;
+  white-space: nowrap;
+}
+/*
+.caption-year {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 3px;
+  letter-spacing: 2px;
+}
+  */
+.dot-nav {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 10px;
+  pointer-events: all;
+}
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.dot.active {
+  background: #e61e1e;
+  width: 18px;
+  border-radius: 3px;
+}
+/* =========================================
+   MOBILE CAROUSEL (Restored & Smoothed)
+   ========================================= */
+/*.mobile-carousel { display: none; padding: 80px 0; overflow: hidden; }
+.mobile-header { text-align: center; margin-bottom: 40px; padding: 0 5%; }
+.mobile-header h2 { font-size: 2rem; letter-spacing: 2px; }
+
+.carousel-track {
+    display: flex; gap: 20px;
+    padding: 0 10%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+.carousel-track::-webkit-scrollbar { display: none; } /* Hide scrollbar */
+/* Ensure the mobile sections are hidden on desktop by default */
+/* --- Speaker Cards Refactor --- */
+/* Hide mobile by default on Desktop */
+#mobileReel {
+    display: none !important;
+}
+
+/* ── BREAKPOINT SWITCH (Mobile Fix) ── */
+@media (max-width: 768px) {
+    /* Hide the complex Desktop Orbit */
+    .orbit-section { 
+        display: none !important; 
+    }
+
+    /* Show the Mobile Reel */
+    #mobileReel { 
+        display: block !important; 
+        padding: 60px 0;
+        background: transparent;
+    }
+
+    .mobile-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .mobile-title {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+        margin-top: 15px;
+        font-weight: 800;
+    }
+
+    .carousel-track-wrap {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .carousel-track {
+        display: flex !important;
+        gap: 20px;
+        padding: 20px 10%;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Hide scrollbar Firefox */
+    }
+
+    .carousel-track::-webkit-scrollbar {
+        display: none; /* Hide scrollbar Chrome/Safari */
+    }
+
+    .mobile-card {
+        flex: 0 0 85%; /* Shows most of the card and a peek of the next */
+        scroll-snap-align: center;
+        background: var(--glass);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .mobile-card img { 
+        width: 100%; 
+        height: 220px; 
+        object-fit: cover; 
+    }
+
+    .m-card-content { 
+        padding: 20px; 
+    }
+
+    .m-card-content h3 { 
+        font-size: 1.1rem; 
+        margin-bottom: 5px;
+    }
+
+    .m-card-content p { 
+        color: var(--ted-red); 
+        letter-spacing: 1px; 
+        font-size: 0.85rem; 
+        font-weight: 600;
+    }
+}
+/* =========================================
+   SPEAKER CARDS
+   ========================================= */
+/* --- SPEAKER REEL (Snap Effect) --- */
+/* Container for the reel */
+.speaker-reel-viewport {
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Force snapping */
+    padding: 80px 0;
+    scrollbar-width: none; /* Hide scrollbar for clean UI */
+}
+
+.speaker-reel-viewport::-webkit-scrollbar { display: none; }
+
+.speaker-reel-track {
+    display: flex;
+    /* This padding ensures the first and last cards can reach the center */
+    padding: 0 calc(50% - 175px); 
+    gap: 40px;
+}
+
+.speaker-reel-card {
+    flex: 0 0 350px;
+    scroll-snap-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    overflow: hidden;
+    /* Start dimmed and smaller */
+    transform: scale(0.85);
+    opacity: 0.3;
+    filter: grayscale(100%);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* The "Projected" Active State */
+.speaker-reel-card.active-slide {
+    transform: scale(1.05);
+    opacity: 1;
+    filter: grayscale(0%);
+    border-color: #e61e1e;
+    box-shadow: 0 20px 50px rgba(230, 30, 30, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+}
+/* =========================================
+   COUNTDOWN
+   ========================================= */
+.count-title { letter-spacing: 4px; font-size: 1rem; color: var(--ted-red); margin-bottom: 50px; }
+.count-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-bottom: 60px; }
+.time-box {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 30px 40px; min-width: 140px;
+    backdrop-filter: blur(5px);
+}
+.time-box span { font-size: 4rem; font-weight: 200; display: block; line-height: 1; }
+.time-box p { font-size: 0.8rem; letter-spacing: 2px; color: var(--text-muted); margin-top: 10px; }
+
+/* Get Tickets Button Glow */
+.cta-glow {
+    background: var(--ted-red);
+    color: white; border: none;
+    padding: 16px 32px; border-radius: 50px;
+    font-size: 1.1rem; font-weight: 700; cursor: pointer;
+    box-shadow: 0 0 20px rgba(230,30,30,0.5);
+    transition: 0.4s;
+}
+.cta-glow:hover {
+    box-shadow: 0 0 40px rgba(230,30,30,0.8);
+    transform: scale(1.05);
+}
+
+/* =========================================
+   ANIMATIONS & RESPONSIVE
+   ========================================= */
+
+/* Floating animation for Hero Title */
+.floating { animation: float 6s ease-in-out infinite; }
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Reveal class for GSAP ScrollTrigger */
+.reveal { opacity: 0; transform: translateY(50px); }
+
+/* BREAKPOINTS */
+@media (max-width: 900px) {
+    .orbit-wrapper { transform: scale(0.8); }
+    .about-container { flex-direction: column-reverse; text-align: center; gap: 40px; }
+    .about-title {text-align: center;}
+    .about-title h2 { font-size: 3rem; }
+}
+
+@media (max-width: 768px) {
+    .orbit-section { display: none; } /* Hide orbit on mobile */
+    .mobile-carousel { display: block; } /* Show carousel instead */
+    .hero { padding: 0 5%; }
+    .nav { padding: 15px 5%; }
+    .time-box { padding: 20px; min-width: 100px; }
+    .time-box span { font-size: 2.5rem; }
+}
