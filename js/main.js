@@ -222,17 +222,17 @@ function initMobileCarousel() {
     if (!track) return;
 
     const eventsData = [
-        { title: "PAST EVENTS", speaker: "Dr. Venu Vasudevan", img: "assets/images/pimg1.jpeg" },
-        { title: "PAST EVENTS", speaker: "Anima Nair", img: "assets/images/pimg2.jpeg" },
-        { title: "PAST EVENTS", speaker: "Anantharaman Ajay", img: "assets/images/pimg3.jpeg" },
-        { title: "PAST EVENTS", speaker: "Steffy Sunny", img: "assets/images/pimg4.jpeg" },
-        { title: "PAST EVENTS", speaker: "Teekaram Meena IAS", img: "assets/images/pimg5.jpeg" },
+        { title: "PAST EVENTS", speaker: "Dr. Venu Vasudevan",  img: "assets/images/pimg1.jpeg" },
+        { title: "PAST EVENTS", speaker: "Anima Nair",           img: "assets/images/pimg2.jpeg" },
+        { title: "PAST EVENTS", speaker: "Anantharaman Ajay",    img: "assets/images/pimg3.jpeg" },
+        { title: "PAST EVENTS", speaker: "Steffy Sunny",         img: "assets/images/pimg4.jpeg" },
+        { title: "PAST EVENTS", speaker: "Teekaram Meena IAS",   img: "assets/images/pimg5.jpeg" },
     ];
 
-    // 1. Inject initial cards
+    // Build cards — same structure as your original
     const cardsHTML = eventsData.map(ev => `
         <div class="mobile-card">
-            <img src="${ev.img}" alt="${ev.title}">
+            <img src="${ev.img}" alt="${ev.speaker}">
             <div class="m-card-content">
                 <h3>${ev.title}</h3>
                 <p>${ev.speaker}</p>
@@ -240,27 +240,29 @@ function initMobileCarousel() {
         </div>
     `).join('');
 
-    // 2. Double the HTML to create a seamless loop
+    // Double clone like your original
     track.innerHTML = cardsHTML + cardsHTML;
 
-    // 3. GSAP Infinite Animation
-    const totalWidth = track.offsetWidth / 2; // Width of one set of cards
+    setTimeout(() => {
+        const distance = track.scrollWidth / 2;
+gsap.set(track, { force3D: true });
 
-    const loop = gsap.to(track, {
-        x: -totalWidth,
-        duration: 20, // Adjust this for speed (higher = slower)
-        ease: "none",
-        repeat: -1,
-        paused: false
-    });
+        const flowAnimation = gsap.to(track, {
+            x: -distance,
+            duration: 22,
+            ease: "none",
+            repeat: -1,
+            force3D: true
+        });
 
-    // 4. Interaction: Pause on touch/hover
-    track.addEventListener("mouseenter", () => loop.pause());
-    track.addEventListener("mouseleave", () => loop.play());
-    track.addEventListener("touchstart", () => loop.pause());
-    track.addEventListener("touchend", () => loop.play());
+        // Pause on touch / resume on release — same as your original
+        track.addEventListener("touchstart", () => flowAnimation.pause(), { passive: true });
+        track.addEventListener("touchend",   () => flowAnimation.play(),  { passive: true });
+        track.addEventListener("mouseenter", () => flowAnimation.pause());
+        track.addEventListener("mouseleave", () => flowAnimation.play());
+
+    }, 200);
 }
-
 // Ensure it runs after the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     initMobileCarousel();
