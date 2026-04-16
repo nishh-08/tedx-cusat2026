@@ -72,7 +72,10 @@ body::after {
 .section { padding: 120px 5%; position: relative; z-index: 1; text-align: center; }
 h2.sec-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; }
 .eyebrow { color: var(--ted-red); letter-spacing: 5px; font-size: 0.8rem; display: block; margin-bottom: 15px; }
-
+.eyebrow2 { color: var(--white); letter-spacing: 5px; font-size: 0.6rem; display: block; margin-bottom: 15px; }
+.venue {
+  margin-top: 50px !important;
+}
 /* ------------------------------------
    INTRO & NAV
    ----------------------------------- */
