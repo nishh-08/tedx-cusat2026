@@ -221,9 +221,6 @@ function initMobileCarousel() {
     const track = document.getElementById('mobileCarouselTrack');
     if (!track) return;
 
-    // Clear existing content to prevent duplicates
-    track.innerHTML = '';
-
     const eventsData = [
         { title: "PAST EVENTS", speaker: "Dr. Venu Vasudevan", img: "assets/images/pimg1.jpeg" },
         { title: "PAST EVENTS", speaker: "Anima Nair", img: "assets/images/pimg2.jpeg" },
@@ -232,18 +229,36 @@ function initMobileCarousel() {
         { title: "PAST EVENTS", speaker: "Teekaram Meena IAS", img: "assets/images/pimg5.jpeg" },
     ];
 
-    eventsData.forEach(ev => {
-        const card = document.createElement('div');
-        card.className = 'mobile-card';
-        card.innerHTML = `
+    // 1. Inject initial cards
+    const cardsHTML = eventsData.map(ev => `
+        <div class="mobile-card">
             <img src="${ev.img}" alt="${ev.title}">
             <div class="m-card-content">
                 <h3>${ev.title}</h3>
                 <p>${ev.speaker}</p>
             </div>
-        `;
-        track.appendChild(card);
+        </div>
+    `).join('');
+
+    // 2. Double the HTML to create a seamless loop
+    track.innerHTML = cardsHTML + cardsHTML;
+
+    // 3. GSAP Infinite Animation
+    const totalWidth = track.offsetWidth / 2; // Width of one set of cards
+
+    const loop = gsap.to(track, {
+        x: -totalWidth,
+        duration: 20, // Adjust this for speed (higher = slower)
+        ease: "none",
+        repeat: -1,
+        paused: false
     });
+
+    // 4. Interaction: Pause on touch/hover
+    track.addEventListener("mouseenter", () => loop.pause());
+    track.addEventListener("mouseleave", () => loop.play());
+    track.addEventListener("touchstart", () => loop.pause());
+    track.addEventListener("touchend", () => loop.play());
 }
 
 // Ensure it runs after the DOM is ready
@@ -267,19 +282,15 @@ function initSpeakerReel() {
     if (!viewport || cards.length === 0) return;
 
     const handleScroll = () => {
-        // Calculate the horizontal center point of the viewport
-        const viewportCenter = viewport.scrollLeft + (viewport.offsetWidth / 2);
+        // Find center of current view
+        const centerX = viewport.scrollLeft + (viewport.offsetWidth / 2);
 
         cards.forEach(card => {
-            // Calculate the horizontal center point of the card
-            // offsetLeft is relative to the track start
-            const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-            
-            // Calculate absolute distance from viewport center
-            const distance = Math.abs(viewportCenter - cardCenter);
-            // On mobile, the tolerance is tighter (100px vs 150px)
-            const threshold = window.innerWidth < 768 ? 100 : 150;
-            // If the card is in the 'projection' zone (near center)
+            const cardRect = card.getBoundingClientRect();
+            const cardMid = card.offsetLeft + (card.offsetWidth / 2);
+            const distance = Math.abs(centerX - cardMid);
+
+            // If card is roughly in the middle 200px of the screen
             if (distance < 150) {
                 card.classList.add('active-slide');
             } else {
@@ -288,13 +299,16 @@ function initSpeakerReel() {
         });
     };
 
-    // Listen for scroll and resize
+    // Listen to scroll
     viewport.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
     
-    // Initial check with a small timeout to ensure layout is ready
-    setTimeout(handleScroll, 100);
+    // Initial check after a short delay for rendering
+    setTimeout(handleScroll, 500);
 }
 
+// Call inside your DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    initSpeakerReel();
+});
 // Call the function
 document.addEventListener('DOMContentLoaded', initSpeakerReel);

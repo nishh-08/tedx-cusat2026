@@ -467,30 +467,35 @@ h2.sec-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; }
 }
 
 /* MOBILE ADJUSTMENTS */
-/* --- SPEAKER REEL MOBILE FIX --- */
 @media (max-width: 768px) {
+  main{
+    overflow: visible !important;
+  }
+    /* 1. Ensure the container doesn't chop off the scroll */
     .speaker-reel-viewport {
-        padding: 40px 0; /* Tighter padding for mobile */
+        display: block !important;
+        width: 100vw;
+        overflow-x: scroll !important; /* Force scroll capability */
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch; /* Smooth momentum on iPhone */
+        padding: 40px 0;
+        cursor: grab;
     }
 
-    .speaker-reel-card {
-        flex: 0 0 280px; /* Smaller cards for mobile */
-        scroll-snap-align: center;
-    }
-
+    /* 2. Ensure the track doesn't wrap cards to the next line */
     .speaker-reel-track {
-        /* Mobile Card is 280px, so half is 140px */
-        padding-left: calc(50% - 140px);
-        padding-right: calc(50% - 140px);
-        gap: 20px; /* Smaller gap for mobile screens */
+        display: flex !important;
+        flex-wrap: nowrap !important; /* This is the most important line */
+        width: max-content; /* Allows track to be as wide as all cards combined */
+        padding-left: calc(50% - 150px); /* Center the first card */
+        padding-right: calc(50% - 150px); /* Center the last card */
     }
 
-    .card-content h3 {
-        font-size: 1.2rem;
-    }
-
-    .card-content .role {
-        font-size: 0.7rem;
+    /* 3. Card sizing for mobile */
+    .speaker-reel-card {
+        flex: 0 0 300px !important; /* Do not let cards shrink */
+        width: 300px;
     }
 }
 /* =========================================
