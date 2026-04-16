@@ -60,12 +60,12 @@ revealElements.forEach(element => {
 
 (function () {
   const events = [
-    { title: "PAST EVENTS", speaker: "Dr.Venu Vasudevan", img: "../assets/images/pimg1.jpeg" },
-    { title: "PAST EVENTS", speaker: "Anima Nair", img: "../assets/images/pimg2.jpeg" },
-    { title: "PAST EVENTS", speaker: "Anantharaman Ajay", img: "../assets/images/pimg3.jpeg" },
-    { title: "PAST EVENTS", speaker: "Steffy Sunny", img: "../assets/images/pimg4.jpeg" },
-    { title: "PAST EVENTS", speaker: "Teekaram Meena IAS", img: "../assets/images/pimg5.jpeg" },
-    { title: "PAST EVENTS", speaker: "Prof.P.R.Poduval", img: "../assets/images/pimg6.jpeg" },
+    { title: "Traveling Responsibly", speaker: "Dr.Venu Vasudevan", img: "../assets/images/pimg1.jpeg" },
+    { title: "Neurodiversity", speaker: "Anima Nair", img: "../assets/images/pimg2.jpeg" },
+    { title: "The evolving landscape of morality", speaker: "Anantharaman Ajay", img: "../assets/images/pimg3.jpeg" },
+    { title: "How confusion make us creative", speaker: "Steffy Sunny", img: "../assets/images/pimg4.jpeg" },
+    { title: "Overcoming Adversities", speaker: "Teekaram Meena IAS", img: "../assets/images/pimg5.jpeg" },
+    { title: "Indian Philosophy of Shreyas", speaker: "Prof.P.R.Poduval", img: "../assets/images/pimg6.jpeg" },
   ];
 
   const N = events.length;
@@ -222,11 +222,12 @@ function initMobileCarousel() {
     if (!track) return;
 
     const eventsData = [
-        { title: "PAST EVENTS", speaker: "Dr. Venu Vasudevan",  img: "assets/images/pimg1.jpeg" },
-        { title: "PAST EVENTS", speaker: "Anima Nair",           img: "assets/images/pimg2.jpeg" },
-        { title: "PAST EVENTS", speaker: "Anantharaman Ajay",    img: "assets/images/pimg3.jpeg" },
-        { title: "PAST EVENTS", speaker: "Steffy Sunny",         img: "assets/images/pimg4.jpeg" },
-        { title: "PAST EVENTS", speaker: "Teekaram Meena IAS",   img: "assets/images/pimg5.jpeg" },
+        { title: "Traveling Responsibly", speaker: "Dr. Venu Vasudevan",  img: "assets/images/pimg1.jpeg" },
+        { title: "Neurodiversity", speaker: "Anima Nair",           img: "assets/images/pimg2.jpeg" },
+        { title: "The evolving landscape of morality", speaker: "Anantharaman Ajay",    img: "assets/images/pimg3.jpeg" },
+        { title: "How confusion make us creative", speaker: "Steffy Sunny",         img: "assets/images/pimg4.jpeg" },
+        { title: "Overcoming Adversities", speaker: "Teekaram Meena IAS",   img: "assets/images/pimg5.jpeg" },
+        { title: "Indian Philosophy of Shreyas", speaker: "Prof.P.R.Poduval", img: "../assets/images/pimg6.jpeg" },
     ];
 
     // Build cards — same structure as your original
