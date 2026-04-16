@@ -4,14 +4,14 @@ gsap.registerPlugin(ScrollTrigger);
 // =========================================
 // DATA: Past Events & Speakers
 // =========================================
-const pastEvents = [
+/*const pastEvents = [
     { title: "TEDx CUSAT 2019", year: "2019", img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800" },
     { title: "TEDx CUSAT 2020", year: "2020", img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=800" },
     { title: "TEDx CUSAT 2021", year: "2021", img: "https://images.unsplash.com/photo-1475721027187-40ae17e07b34?q=80&w=800" },
     { title: "TEDx CUSAT 2022", year: "2022", img: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800" },
     { title: "TEDx CUSAT 2023", year: "2023", img: "https://images.unsplash.com/photo-1531058020387-3be344556be6?q=80&w=800" },
     { title: "TEDx CUSAT 2024", year: "2024", img: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?q=80&w=800" }
-];
+];*/
 
 // =========================================
 // 1. INTRO & HERO ANIMATIONS
@@ -246,6 +246,11 @@ function initMobileCarousel() {
 
     setTimeout(() => {
         const distance = track.scrollWidth / 2;
+
+        if (distance === 0) {
+            setTimeout(() => initMobileCarousel(), 300); // retry after 300ms
+            return;
+        }
 gsap.set(track, { force3D: true });
 
         const flowAnimation = gsap.to(track, {
@@ -262,7 +267,7 @@ gsap.set(track, { force3D: true });
         track.addEventListener("mouseenter", () => flowAnimation.pause());
         track.addEventListener("mouseleave", () => flowAnimation.play());
 
-    }, 200);
+    }, 400);
 }
 // Ensure it runs after the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
