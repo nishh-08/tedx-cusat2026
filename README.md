@@ -19,9 +19,9 @@ Features
 	> Countdown Timer
 	•	Real-time countdown to event
 	•	Clear CTA for ticket conversion
-  > Call-to-Action (CTA)
-  •	Strategically placed “Get Tickets” buttons
-  •	Designed for visibility and conversion
+    > Call-to-Action (CTA)
+    •	Strategically placed “Get Tickets” buttons
+    •	Designed for visibility and conversion
 
 Tech Stack
 	•	HTML5
