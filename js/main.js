@@ -267,13 +267,19 @@ function initSpeakerReel() {
     if (!viewport || cards.length === 0) return;
 
     const handleScroll = () => {
-        const viewportCenter = viewport.scrollLeft + viewport.offsetWidth / 2;
+        // Calculate the horizontal center point of the viewport
+        const viewportCenter = viewport.scrollLeft + (viewport.offsetWidth / 2);
 
         cards.forEach(card => {
-            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+            // Calculate the horizontal center point of the card
+            // offsetLeft is relative to the track start
+            const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+            
+            // Calculate absolute distance from viewport center
             const distance = Math.abs(viewportCenter - cardCenter);
-
-            // If the card is in the center "projection" zone
+            // On mobile, the tolerance is tighter (100px vs 150px)
+            const threshold = window.innerWidth < 768 ? 100 : 150;
+            // If the card is in the 'projection' zone (near center)
             if (distance < 150) {
                 card.classList.add('active-slide');
             } else {
@@ -282,11 +288,13 @@ function initSpeakerReel() {
         });
     };
 
+    // Listen for scroll and resize
     viewport.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
     
-    // Trigger once on load to highlight the first card
-    setTimeout(handleScroll, 500); 
+    // Initial check with a small timeout to ensure layout is ready
+    setTimeout(handleScroll, 100);
 }
 
-// Initialize the reel
-initSpeakerReel();
+// Call the function
+document.addEventListener('DOMContentLoaded', initSpeakerReel);

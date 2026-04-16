@@ -397,45 +397,79 @@ h2.sec-title { font-size: 3rem; font-weight: 800; margin-bottom: 60px; }
    ========================================= */
 /* --- SPEAKER REEL (Snap Effect) --- */
 /* Container for the reel */
+/* THE VIEWPORT (The Window) */
 .speaker-reel-viewport {
     width: 100%;
     overflow-x: auto;
-    scroll-snap-type: x mandatory; /* Force snapping */
+    scroll-snap-type: x mandatory;
     padding: 80px 0;
-    scrollbar-width: none; /* Hide scrollbar for clean UI */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
 }
 
-.speaker-reel-viewport::-webkit-scrollbar { display: none; }
+.speaker-reel-viewport::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
 
+/* THE TRACK (The long line of cards) */
 .speaker-reel-track {
     display: flex;
-    /* This padding ensures the first and last cards can reach the center */
-    padding: 0 calc(50% - 175px); 
+    /* (50% of screen width) minus (half of card width) */
+    /* If card is 350px, half is 175px */
+    padding-left: calc(50% - 175px); 
+    padding-right: calc(50% - 175px); 
     gap: 40px;
+    width: max-content; /* Critical: prevents cards from squeezing */
 }
 
+/* THE CARD */
 .speaker-reel-card {
-    flex: 0 0 350px;
+    flex: 0 0 350px; /* Force consistent width */
     scroll-snap-align: center;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
     overflow: hidden;
-    /* Start dimmed and smaller */
     transform: scale(0.85);
     opacity: 0.3;
     filter: grayscale(100%);
     transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* The "Projected" Active State */
 .speaker-reel-card.active-slide {
     transform: scale(1.05);
     opacity: 1;
     filter: grayscale(0%);
     border-color: #e61e1e;
     box-shadow: 0 20px 50px rgba(230, 30, 30, 0.2);
-    background: rgba(255, 255, 255, 0.05);
+}
+
+/* MOBILE ADJUSTMENTS */
+/* --- SPEAKER REEL MOBILE FIX --- */
+@media (max-width: 768px) {
+    .speaker-reel-viewport {
+        padding: 40px 0; /* Tighter padding for mobile */
+    }
+
+    .speaker-reel-card {
+        flex: 0 0 280px; /* Smaller cards for mobile */
+        scroll-snap-align: center;
+    }
+
+    .speaker-reel-track {
+        /* Mobile Card is 280px, so half is 140px */
+        padding-left: calc(50% - 140px);
+        padding-right: calc(50% - 140px);
+        gap: 20px; /* Smaller gap for mobile screens */
+    }
+
+    .card-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .card-content .role {
+        font-size: 0.7rem;
+    }
 }
 /* =========================================
    COUNTDOWN
