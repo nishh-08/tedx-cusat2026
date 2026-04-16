@@ -28,3 +28,6 @@ Tech Stack
 	•	CSS3 (Custom Styling + Animations)
 	•	JavaScript (Vanilla JS)
 	•	GSAP (GreenSock Animation Platform)
+
+Live Demo
+https://tedx-cusat2026.vercel.app
